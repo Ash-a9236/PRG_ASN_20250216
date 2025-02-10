@@ -67,7 +67,19 @@ public class Hospital<T> implements Iterator<T> {
         if (contains(name)) {
             getNode(name).getPatient().setSeverity(SEVERITY.valueOf(newSeverity));
         } else {
-            System.out.println("! PATIENT NOT FOUND !");
+            System.out.println("[ERROR : PATIENT NOT FOUND]");
+        }
+    }
+
+    public void markAsICU (String name) {
+        if (contains(name)) {
+            if (getNode(name).getPatient().isInICU()) {
+                System.out.println("[ERROR : PATIENT ALREADY IN ICU]");
+            } else {
+                getNode(name).getPatient().setInICU(true);
+            }
+        } else {
+            System.out.println("[ERROR : PATIENT NOT FOUND]");
         }
     }
 
