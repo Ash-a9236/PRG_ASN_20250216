@@ -83,6 +83,15 @@ public class Hospital<T> implements Iterator<T> {
         }
     }
 
+    public void displayPatients () {
+        head.getPatient().toString();
+        Node<T> last = head.next;
+
+        while (last.next != null) {
+            System.out.println(last.next.getPatient().toString());
+        }
+    }
+
 //ITERATOR CLASSES//////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public boolean hasNext() {
@@ -106,20 +115,20 @@ public class Hospital<T> implements Iterator<T> {
             this.patient = patient;
         }
 
-    public Node<T> getNext() {
-        return next;
-    }
+        public Node<T> getNext() {
+            return next;
+        }
 
-    public void setNext(Node<T> next) {
-        this.next = next;
-    }
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
 
-    public Patient getPatient() {
-        return patient;
-    }
+        public Patient getPatient() {
+            return patient;
+        }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+        public void setPatient(Patient patient) {
+            this.patient = patient;
+        }
     }
-}
 }
