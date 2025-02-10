@@ -43,13 +43,33 @@ public class Hospital<T> implements Iterator<T> {
 
         while (last.next != null) {
             if (last.next.getPatient().getName().equals(name)) {
-                System.out.println("PATIENT FOUND : " + last.next.toString());
+                //System.out.println("PATIENT FOUND : " + last.next.toString());
+                System.out.println("patient found!");
                 return true;
             }
         }
         return false;
     }
 
+    public Node<T> getNode(String name) {
+        Node<T> last = head.next;
+
+        while (last.next != null) {
+            if (last.next.getPatient().getName().equals(name)) {
+                return last.next;
+            }
+        }
+
+        return null;
+    }
+
+    public void updateSeverity (String name, String newSeverity) {
+        if (contains(name)) {
+            getNode(name).getPatient().setSeverity(SEVERITY.valueOf(newSeverity));
+        } else {
+            System.out.println("! PATIENT NOT FOUND !");
+        }
+    }
 
 //ITERATOR CLASSES//////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
