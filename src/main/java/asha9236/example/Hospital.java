@@ -38,6 +38,17 @@ public class Hospital<T> implements Iterator<T> {
         }
     }
 
+    public boolean contains(String name) {
+        Node<T> last = head.next;
+
+        while (last.next != null) {
+            if (last.next.getPatient().getName().equals(name)) {
+                System.out.println("PATIENT FOUND : " + last.next.toString());
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 //ITERATOR CLASSES//////////////////////////////////////////////////////////////////////////////////////////////////////
