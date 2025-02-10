@@ -47,6 +47,8 @@ public class Hospital<T> implements Iterator<T> {
                 System.out.println("patient found!");
                 return true;
             }
+
+            last = last.next;
         }
         return false;
     }
@@ -58,6 +60,8 @@ public class Hospital<T> implements Iterator<T> {
             if (last.next.getPatient().getName().equals(name)) {
                 return last.next;
             }
+
+            last = last.next;
         }
 
         return null;
@@ -84,11 +88,16 @@ public class Hospital<T> implements Iterator<T> {
     }
 
     public void displayPatients () {
-        head.getPatient().toString();
-        Node<T> last = head.next;
+        if (head == null) {
+            System.out.println("[ERROR : NO PATIENTS]");
+        } else {
+            head.getPatient().toString();
+            Node<T> last = head.next;
 
-        while (last.next != null) {
-            System.out.println(last.next.getPatient().toString());
+            while (last.next != null) {
+                System.out.println(last.next.getPatient().toString());
+                last = last.next;
+            }
         }
     }
 
