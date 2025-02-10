@@ -3,17 +3,29 @@ package asha9236.example;
 import java.util.Iterator;
 
 public class Hospital<T> implements Iterator<T> {
-    private Node head;
+    private Node<T> head;
 
-
-    public Hospital(Node head) {
+    public Hospital(Node<T> head) {
         this.head = head;
     }
 
-    public Hospital() {
-        this.head = null;
+    public void addPatient(Patient patient) {
+        Node<T> newNode = new Node<>(patient);
+
+        if (head == null) {
+            this.head = newNode;
+        } else {
+
+            Node<T> last = head.next;
+            while (last.next != null) {
+                last = last.next;
+            }
+
+            last.next = newNode;
+        }
     }
 
+    //ITERATOR CLASSES//////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public boolean hasNext() {
         return false;
@@ -24,25 +36,10 @@ public class Hospital<T> implements Iterator<T> {
         return null;
     }
 
-    public Hospital<T> insert(Hospital<T> list, Patient patient) {
-        Node newNode = new Node(patient);
 
-        if (list.head == null) {
-            list.head = newNode;
-        } else {
-            Node last = list.head;
-
-            while (last.next != null) {
-                last = last.next;
-            }
-
-            last.next = newNode;
-        }
-        return list;
-    }
-
-    static class Node {
-        private Node next;
+//NODE CLASS////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static class Node<T> {
+        private Node<T> next;
         private Patient patient;
 
 
