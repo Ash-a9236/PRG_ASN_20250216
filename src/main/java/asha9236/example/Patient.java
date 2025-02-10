@@ -17,4 +17,8 @@ public class Patient {
         this.inICU = true;
     }
 
+    public void updateSeverity(String newSeverity) {
+        this.severity = SEVERITY.valueOf(newSeverity);
+    }
+
 }
