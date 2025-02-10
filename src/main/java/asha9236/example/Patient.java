@@ -10,6 +10,7 @@ public class Patient {
         this.name = name;
         this.age = age;
         this.severity = severity;
+        this.inICU = inICU;
     }
 
 
