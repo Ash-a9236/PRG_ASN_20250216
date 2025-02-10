@@ -13,7 +13,8 @@ public class Patient {
         this.inICU = inICU;
     }
 
-
-
+    public void markAsICU() {
+        this.inICU = true;
+    }
 
 }
