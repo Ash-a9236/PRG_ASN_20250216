@@ -21,4 +21,8 @@ public class Patient {
         this.severity = SEVERITY.valueOf(newSeverity);
     }
 
+    @Override
+    public String toString() {
+        return "PATIENT " + name + "\nAGE : " + age + "\nSEVERITY : " + severity + "\nICU : " + inICU;
+    }
 }
