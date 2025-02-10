@@ -25,7 +25,22 @@ public class Hospital<T> implements Iterator<T> {
         }
     }
 
-    //ITERATOR CLASSES//////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void removePatient(String name) {
+        Node<T> last = head.next;
+
+        while (last.next != null) {
+            if (last.next.getPatient().getName().equals(name)) {
+                last.next = last.next.next; //TODO : verify the logic cux daFuck did I just pull
+                break;
+            } else {
+                last = last.next;
+            }
+        }
+    }
+
+
+
+//ITERATOR CLASSES//////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public boolean hasNext() {
         return false;
@@ -47,5 +62,21 @@ public class Hospital<T> implements Iterator<T> {
             this.next = null;
             this.patient = patient;
         }
+
+    public Node<T> getNext() {
+        return next;
     }
+
+    public void setNext(Node<T> next) {
+        this.next = next;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+}
 }

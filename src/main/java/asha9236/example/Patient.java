@@ -25,4 +25,37 @@ public class Patient {
     public String toString() {
         return "PATIENT " + name + "\nAGE : " + age + "\nSEVERITY : " + severity + "\nICU : " + inICU;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public SEVERITY getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(SEVERITY severity) {
+        this.severity = severity;
+    }
+
+    public boolean isInICU() {
+        return inICU;
+    }
+
+    public void setInICU(boolean inICU) {
+        this.inICU = inICU;
+    }
 }
