@@ -91,6 +91,7 @@ public class Hospital<T> implements Iterator<T> {
         if (head == null) {
             System.out.println("[ERROR : NO PATIENTS]");
         } else {
+            System.out.println("______PATIENTS_______________________________________");
             head.getPatient().toString();
             Node<T> last = head.next;
 
