@@ -14,7 +14,6 @@
 
 package asha9236.example;
 
-import java.io.Console;
 import java.util.Scanner;
 
 public class Main {
@@ -42,22 +41,23 @@ public class Main {
         Hospital.Node<Patient> Head = new Hospital.Node<>(patient01);
         Hospital<Patient> hospital = new Hospital<>(Head);
 
-        Hospital.Node<Patient> patientNode02 = new Hospital.Node<>(patient02);
-        Hospital.Node<Patient> patientNode03 = new Hospital.Node<>(patient03);
-        Hospital.Node<Patient> patientNode04 = new Hospital.Node<>(patient04);
-        Hospital.Node<Patient> patientNode05 = new Hospital.Node<>(patient05);
+        hospital.addPatient(patient01);
+        hospital.addPatient(patient02);
+        hospital.addPatient(patient03);
+        hospital.addPatient(patient04);
+        hospital.addPatient(patient05);
 
-        Hospital.Node<Patient> patientNode06 = new Hospital.Node<>(patient06);
-        Hospital.Node<Patient> patientNode07 = new Hospital.Node<>(patient07);
-        Hospital.Node<Patient> patientNode08 = new Hospital.Node<>(patient08);
-        Hospital.Node<Patient> patientNode09 = new Hospital.Node<>(patient09);
-        Hospital.Node<Patient> patientNode10 = new Hospital.Node<>(patient10);
+        hospital.addPatient(patient06);
+        hospital.addPatient(patient07);
+        hospital.addPatient(patient08);
+        hospital.addPatient(patient09);
+        hospital.addPatient(patient10);
 
-        Hospital.Node<Patient> patientNode11 = new Hospital.Node<>(patient11);
-        Hospital.Node<Patient> patientNode12 = new Hospital.Node<>(patient12);
-        Hospital.Node<Patient> patientNode13 = new Hospital.Node<>(patient13);
-        Hospital.Node<Patient> patientNode14 = new Hospital.Node<>(patient14);
-        Hospital.Node<Patient> patientNode15 = new Hospital.Node<>(patient15);
+        hospital.addPatient(patient11);
+        hospital.addPatient(patient12);
+        hospital.addPatient(patient13);
+        hospital.addPatient(patient14);
+        hospital.addPatient(patient15);
 
         //CONSOLE APP///////////////////////////////////////////////////////////////////////////////////////////////////
         /*
@@ -67,11 +67,8 @@ public class Main {
         * */
         int userAns;
         Scanner console = new Scanner(System.in);
-        System.out.println("Welcome to youWillDieHere Hospital :) \nPlease input your next action ....");
-        System.out.println("1. Add Patient                  5. Update Patient Severity");
-        System.out.println("2. Remove Patient               6. Display Patients by Severity");
-        System.out.println("3. Display Patients             7. Display Current ICU Patients");
-        System.out.println("4. Move Patient to ICU          8. EXIT");
+        System.out.println("Welcome to youWillDieHere Hospital :) \n");
+        menu();
 
         userAns = console.nextInt();
         while (userAns != 8) {
@@ -81,7 +78,7 @@ public class Main {
                     System.out.println("Please input the following : ");
 
                     System.out.print("NAME : ");
-                    String nameCase01 = console.next();
+                    String name = console.next();
                     System.out.print("AGE : ");
                     int age = console.nextInt();
                     System.out.print("SEVERITY : ");
@@ -93,58 +90,91 @@ public class Main {
                     if (inICU.equalsIgnoreCase("y")) {
                         bInICU = true;
                     }
-                    Patient tempPatient = new Patient(nameCase01, age, SEVERITY.valueOf(severity), bInICU);
+                    Patient tempPatient = new Patient(name, age, SEVERITY.valueOf(severity), bInICU);
                     hospital.addPatient(tempPatient);
+                    hospital.getNode(name).toString();
 
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 case 2:
                     System.out.println("REMOVE PATIENT");
                     System.out.println("Please input the following : ");
 
                     System.out.print("NAME : ");
-                    String nameCase02 = console.next();
+                    name = console.next();
 
-                    hospital.removePatient(nameCase02);
+                    hospital.removePatient(name);
+                    System.out.println(hospital.getNode(name).toString());
+
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 case 3:
                     System.out.println("DISPLAY PATIENTS");
                     hospital.displayPatients();
+
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 case 4:
                     System.out.println("MOVE PATIENT TO ICU");
                     System.out.println("Please input the following : ");
 
                     System.out.print("NAME : ");
-                    String nameCase04 = console.next();
+                    name = console.next();
 
-                    hospital.markAsICU(nameCase04);
+                    hospital.markAsICU(name);
+                    System.out.println(hospital.getNode(name).toString());
+
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 case 5:
                     System.out.println("UPDATE PATIENT SEVERITY");
                     System.out.println("Please input the following : ");
 
                     System.out.print("NAME : ");
-                    String nameCase05 = console.next();
+                    name = console.next();
                     System.out.print("NEW SEVERITY : ");
                     String newSeverity = console.next();
 
-                    hospital.updateSeverity(nameCase05, newSeverity);
+                    hospital.updateSeverity(name, newSeverity);
+                    System.out.println(hospital.getNode(name).toString());
+
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 case 6:
                     System.out.println("DISPLAY PATIENT BY SEVERITY");
 
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 case 7:
                     System.out.println("DISPLAY CURRENT ICU PATIENTS");
 
+                    menu();
+                    userAns = console.nextInt();
                     break;
                 default:
-                    System.out.println("1. Add Patient                  5. Update Patient Severity");
-                    System.out.println("2. Remove Patient               6. Display Patients by Severity");
-                    System.out.println("3. Display Patients             7. Display Current ICU Patients");
-                    System.out.println("4. Move Patient to ICU          8. EXIT");
+                    System.out.println("[ERROR : OPTION NOT VALID]");
+                    menu();
                     break;
             }
         }
+    }
+
+
+
+    public static void menu() {
+        System.out.println("─────────────────────────────────────────────────────────────────────");
+        System.out.println("│  1. Add Patient                  5. Update Patient Severity       │");
+        System.out.println("│  2. Remove Patient               6. Display Patients by Severity  │");
+        System.out.println("│  3. Display Patients             7. Display Current ICU Patients  │");
+        System.out.println("│  4. Move Patient to ICU          8. EXIT                          │");
+        System.out.println("─────────────────────────────────────────────────────────────────────");
+
+        System.out.print("\n\n Please input your next action : ");
     }
 }
