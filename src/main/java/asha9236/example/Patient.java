@@ -23,7 +23,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "PATIENT " + name + "\nAGE : " + age + "\nSEVERITY : " + severity + "\nICU : " + inICU;
+        return "\n\nPATIENT " + name + "\n   AGE : " + age + "\n   SEVERITY : " + severity + "\n   ICU : " + inICU;
     }
 
 

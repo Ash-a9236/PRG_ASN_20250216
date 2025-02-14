@@ -16,7 +16,7 @@ public class Hospital<T> implements Iterator<T> {
             this.head = newNode;
         } else {
 
-            Node<T> last = head.next;
+            Node<T> last = head;
             while (last.next != null) {
                 last = last.next;
             }
@@ -29,7 +29,7 @@ public class Hospital<T> implements Iterator<T> {
         Node<T> last = head.next;
 
         while (last.next != null) {
-            if (last.next.getPatient().getName().equals(name)) {
+            if (last.next.next.getPatient().getName().equals(name)) {
                 last.next = last.next.next; //TODO : verify the logic cux daFuck did I just pull
                 break;
             } else {
@@ -54,10 +54,10 @@ public class Hospital<T> implements Iterator<T> {
     }
 
     public Node<T> getNode(String name) {
-        Node<T> last = head.next;
+        Node<T> last = head;
 
         while (last.next != null) {
-            if (last.next.getPatient().getName().equals(name)) {
+            if (last.getPatient().getName().equals(name)) {
                 return last.next;
             }
 
@@ -93,7 +93,7 @@ public class Hospital<T> implements Iterator<T> {
         } else {
             System.out.println("______PATIENTS_______________________________________");
             head.getPatient().toString();
-            Node<T> last = head.next;
+            Node<T> last = head;
 
             while (last.next != null) {
                 System.out.println(last.next.getPatient().toString());
