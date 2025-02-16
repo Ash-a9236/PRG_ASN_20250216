@@ -95,6 +95,7 @@ public class Main {
                     hospital.getNode(name).toString();
 
                     menu();
+                    String trash = console.next();
                     userAns = console.nextInt();
                     break;
                 case 2:
@@ -105,9 +106,10 @@ public class Main {
                     name = console.next();
 
                     hospital.removePatient(name);
-                    System.out.println(hospital.getNode(name).toString());
+                    //System.out.println(hospital.getNode(name).toString());
 
                     menu();
+                    trash = console.next();
                     userAns = console.nextInt();
                     break;
                 case 3:
@@ -115,6 +117,7 @@ public class Main {
                     hospital.displayPatients();
 
                     menu();
+                    trash = console.next();
                     userAns = console.nextInt();
                     break;
                 case 4:
@@ -128,6 +131,7 @@ public class Main {
                     System.out.println(hospital.getNode(name).toString());
 
                     menu();
+                    trash = console.next();
                     userAns = console.nextInt();
                     break;
                 case 5:
@@ -143,18 +147,21 @@ public class Main {
                     System.out.println(hospital.getNode(name).toString());
 
                     menu();
+                    trash = console.next();
                     userAns = console.nextInt();
                     break;
                 case 6:
                     System.out.println("DISPLAY PATIENT BY SEVERITY");
 
                     menu();
+                    trash = console.next();
                     userAns = console.nextInt();
                     break;
                 case 7:
                     System.out.println("DISPLAY CURRENT ICU PATIENTS");
 
                     menu();
+                    trash = console.next();
                     userAns = console.nextInt();
                     break;
                 default:
