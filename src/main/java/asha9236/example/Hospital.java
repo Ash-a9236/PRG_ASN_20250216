@@ -23,6 +23,8 @@ public class Hospital<T> implements Iterator<T> {
 
             last.next = newNode;
         }
+
+        System.out.println("Patient added successfully");
     }
 
     public void removePatient(String name) {
@@ -56,8 +58,9 @@ public class Hospital<T> implements Iterator<T> {
     public Node<T> getNode(String name) {
         Node<T> last = head;
 
-        while (last.next != null) {
+        while (last.next != null) { //breaking out too early : not able to reach last node
             if (last.getPatient().getName().equals(name)) {
+                printPatient(last.next);
                 return last.next;
             }
 
@@ -65,6 +68,23 @@ public class Hospital<T> implements Iterator<T> {
         }
 
         return null;
+    }
+
+    public void getNode1(String name) {
+        Node<T> last = head;
+
+        while (last.next != null) { //breaking out too early : not able to reach last node
+            if (last.getPatient().getName().equals(name)) {
+                last.next.toString();
+                break;
+            }
+
+            last = last.next;
+        }
+    }
+
+    public void printPatient (Node<T> node) {
+        node.toString();
     }
 
     public void updateSeverity (String name, String newSeverity) {
