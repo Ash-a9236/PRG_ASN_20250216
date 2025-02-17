@@ -44,7 +44,7 @@ public class Main {
         hospital.addPatient(patient01);
         hospital.addPatient(patient02);
         hospital.addPatient(patient03);
-
+        System.out.println();
         System.out.println(hospital.getNode1("John Smith"));
 
 

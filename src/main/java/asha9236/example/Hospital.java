@@ -1,5 +1,6 @@
 package asha9236.example;
 
+import java.sql.SQLOutput;
 import java.util.Iterator;
 
 public class Hospital<T> implements Iterator<T> {
@@ -78,6 +79,7 @@ public class Hospital<T> implements Iterator<T> {
                 last.next.toString();
                 break;
             }
+            System.out.println();
 
             last = last.next;
         }
